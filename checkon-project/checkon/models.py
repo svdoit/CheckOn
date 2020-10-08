@@ -8,6 +8,9 @@ class Item(models.Model):
     itemPrice = models.CharField(max_length=20)
     category = models.IntegerField(max_length=10)
 
+    def __str__(self):
+        return self.itemName
+        
 # 0. 과일, 견과
 # 1. 수산
 # 2. 정육, 계란
