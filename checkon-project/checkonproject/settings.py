@@ -34,11 +34,22 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'checkon.apps.CheckonConfig',
+    'accounts.apps.AccountsConfig',
+    
+
+    #allauth
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    #provider
+    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -126,3 +137,14 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+    
+    'django.contrib.auth.backends.RemoteUserBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+SITE_ID = 1
+LOGIN_REDIRECT_URL ='/'
